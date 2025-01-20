@@ -27,9 +27,9 @@ services:
     networks:
       - local-network
 
-  # pgsql_siges:
+  # pgsql:
   #   image: postgres:12.17
-  #   container_name: pgsql_siges
+  #   container_name: pgsql
   #   restart: always
   #   ports:
   #     - "5432:5432"
