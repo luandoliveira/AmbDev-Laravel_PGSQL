@@ -1,0 +1,61 @@
+services:
+  app:
+    build:
+      args:
+        user: LuanDOliveira
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: siges/laravel-app
+    container_name: laravel-app
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www/
+    restart: always
+    networks:
+      - local-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    restart: always
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./:/var/www/
+      - ./docker/nginx/:/etc/nginx/conf.d/
+    networks:
+      - local-network
+
+  # pgsql_siges:
+  #   image: postgres:12.17
+  #   container_name: pgsql_siges
+  #   restart: always
+  #   ports:
+  #     - "5432:5432"
+  #   volumes:
+  #     - ./.docker/postgresql:/var/lib/postgresql/data
+  #   environment:
+  #     POSTGRES_DB: ${DB_DATABASE}
+  #     POSTGRES_USER: ${DB_USERNAME}
+  #     POSTGRES_PASSWORD: ${DB_PASSWORD}
+  #   networks:
+  #     - docker-laravel
+
+  # pgadmin:
+  #   depends_on:
+  #     - pgsql
+  #   image: dpage/pgadmin4
+  #   container_name: pgadmin
+  #   restart: always
+  #   ports:
+  #     - "8080:80"
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+  #   networks:
+  #     - docker-laravel
+
+networks:
+    local-network:
+      external: true
