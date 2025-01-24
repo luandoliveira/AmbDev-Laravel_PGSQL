@@ -39,7 +39,7 @@ php artisan key:generate # Gera a chave da aplicação
 ```
 Feito todas as etapas, verificar no navegador o endereço de ``http://localhost:5000`` e verifique se é possível visualizar a Homepage Laravel.
 
-![Exemplo de Aplicação](/homepage.png)
+![Homepage](/homepage.png)
 
 
 ## License
