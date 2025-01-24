@@ -29,7 +29,7 @@ docker compose up -d --build
 ```
 Após o término do build da aplicação acesse o bash do container do app
 ```bash
-docker exec -it <codigo> bash
+docker exec -it <codigo_container> bash
 ```
 E execute os seguintes comandos:
 ```bash
