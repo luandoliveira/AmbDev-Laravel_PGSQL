@@ -6,7 +6,7 @@ services:
         uid: 1000
       context: ./
       dockerfile: Dockerfile
-    image: siges/laravel-app
+    image: ambdev/laravel-app
     container_name: laravel-app
     working_dir: /var/www/
     volumes:
